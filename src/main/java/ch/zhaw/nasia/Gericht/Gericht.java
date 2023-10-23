@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-@Document("gericht")
+
 public class Gericht {
     private int gerichtId;
     @NonNull
