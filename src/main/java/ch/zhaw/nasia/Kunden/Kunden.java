@@ -6,8 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Kunden {
-   
+public class Kunden { 
     private int kundenId;
     private String name;
     private int telefonnummer;

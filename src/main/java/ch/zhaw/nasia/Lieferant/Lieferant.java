@@ -7,7 +7,6 @@ import lombok.Setter;
 @Setter
 
 public class Lieferant {
-    
     private int lieferantId;
     private String name;
     private Verfügbarkeit verfügbarkeit;
