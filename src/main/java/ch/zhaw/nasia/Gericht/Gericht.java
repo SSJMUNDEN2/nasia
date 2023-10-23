@@ -10,5 +10,4 @@ public class Gericht {
     private int gerichtId;
     private String name;
     private double preis;
-    
 }

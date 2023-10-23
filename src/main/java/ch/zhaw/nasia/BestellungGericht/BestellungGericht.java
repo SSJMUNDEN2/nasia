@@ -7,7 +7,6 @@ import lombok.Setter;
 @Setter
 
 public class BestellungGericht {
-    
     private int bestellungGerichtid;
     private int gerichtsId;
     private int menge;
