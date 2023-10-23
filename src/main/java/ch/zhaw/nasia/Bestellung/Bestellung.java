@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
+@Document("bestellung")
 public class Bestellung {
     private int bestellungId;
     private int kundenId;
