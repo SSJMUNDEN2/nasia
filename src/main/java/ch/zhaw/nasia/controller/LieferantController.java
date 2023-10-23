@@ -20,4 +20,9 @@ public class LieferantController {
     public void addLieferant(Lieferant lieferant) {
         listofLieferant.add(lieferant);
     }
+
+    @GetMapping("/lieferant/{id}")
+    public Lieferant getLieferantById(int id) {
+        return listofLieferant.get(id);
+    }
 }

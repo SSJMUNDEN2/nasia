@@ -20,4 +20,9 @@ public class GerichtController {
     public void addGericht(Gericht gericht) {
         listofGericht.add(gericht);
     }
+
+    @GetMapping("/gericht/{id}")
+    public Gericht getGerichtById(int id) {
+        return listofGericht.get(id);
+    }
 }

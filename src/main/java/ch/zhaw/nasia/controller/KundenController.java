@@ -20,4 +20,9 @@ public class KundenController {
     public void addKunden(Kunden kunden) {
         listofKunden.add(kunden);
     }
+
+    @GetMapping("/kunden/{id}")
+    public Kunden getKundenById(int id) {
+        return listofKunden.get(id);
+    }
 }

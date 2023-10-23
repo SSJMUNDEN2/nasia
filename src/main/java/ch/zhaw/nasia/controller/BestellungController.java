@@ -20,4 +20,9 @@ public class BestellungController {
         public void addBestellung(Bestellung bestellung) {
             listofBestellung.add(bestellung);
         }
+
+        @GetMapping("/bestellung/{id}")
+        public Bestellung getBestellungById(int id) {
+            return listofBestellung.get(id);
+        }     
 }

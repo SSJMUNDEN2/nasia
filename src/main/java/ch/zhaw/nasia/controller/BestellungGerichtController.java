@@ -20,4 +20,9 @@ public class BestellungGerichtController {
     public void addBestellungGericht(BestellungGericht bestellungGericht) {
         listofBestellungGericht.add(bestellungGericht);
     }
+
+    @GetMapping("/bestellungGericht/{id}")
+    public BestellungGericht getBestellungGerichtById(int id) {
+        return listofBestellungGericht.get(id);
+    }
 }
