@@ -2,6 +2,7 @@ package ch.zhaw.nasia.controller;
 
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ch.zhaw.nasia.Gericht.Gericht;
 
@@ -13,5 +14,10 @@ public class GerichtController {
     @GetMapping("/gericht")
     public ArrayList<Gericht> getGericht() {
         return listofGericht;
+    }
+
+    @PostMapping("/gericht")
+    public void addGericht(Gericht gericht) {
+        listofGericht.add(gericht);
     }
 }
