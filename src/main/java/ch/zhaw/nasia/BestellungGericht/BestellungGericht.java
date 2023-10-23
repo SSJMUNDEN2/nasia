@@ -1,15 +1,14 @@
 package ch.zhaw.nasia.BestellungGericht;
-
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.NonNull;
-
+import lombok.Getter;
+@RequiredArgsConstructor
 @Getter
 @Setter
-
+@Document("bestellungGericht")
 public class BestellungGericht {
     private int bestellungGerichtid;
     private int gerichtsId;
