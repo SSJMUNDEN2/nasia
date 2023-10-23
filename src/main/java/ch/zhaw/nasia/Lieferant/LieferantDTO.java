@@ -2,6 +2,7 @@ package ch.zhaw.nasia.Lieferant;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 @NoArgsConstructor
 @Getter
 
