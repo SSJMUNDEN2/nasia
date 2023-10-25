@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 
 public class GerichtCreateDTO {
+    private String gerichtId;
     private String name;
     private double preis;
 }

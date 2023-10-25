@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 
-public class LieferantDTO {
+public class LieferantCreateDTO {
+    private String lieferantId;
     private String name;
     private Verfügbarkeit verfügbarkeit;
 }

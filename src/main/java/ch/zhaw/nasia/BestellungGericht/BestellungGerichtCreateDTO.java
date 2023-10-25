@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Getter
 
 public class BestellungGerichtCreateDTO {
-    private int menge;
-    private int gesamtpreis;
+    private String bestellungGerichtid;
+    private String gerichtsId;
+    private String menge;
+    private double gesamtpreis;
 }

@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 @Getter
 
 public class BestellungCreateDTO {  
-    private int lieferdauer;
+    private String bestellungId;
+    private String kundenId;
+    private String lieferantId;
+    private String bestellungGerichtId;
+    private String lieferdauer;
     private Status status;
 }

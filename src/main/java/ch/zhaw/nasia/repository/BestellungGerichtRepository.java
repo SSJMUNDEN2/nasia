@@ -1,7 +1,11 @@
 package ch.zhaw.nasia.repository;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
+
 import ch.zhaw.nasia.BestellungGericht.BestellungGericht;
 
-public class BestellungGerichtRepository extends MongoRepository<BestellungGericht, String>{
-    
+public interface BestellungGerichtRepository extends MongoRepository<BestellungGericht, String> {
+
+    BestellungGericht findByBestellungGerichtid(String bestellungGerichtid);
+
 }
