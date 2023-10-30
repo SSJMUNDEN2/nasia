@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Setter
 @Document("kunden")
+
 public class Kunden { 
     @Id
     @Field("kundenId")
