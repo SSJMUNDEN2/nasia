@@ -1,6 +1,8 @@
 package ch.zhaw.nasia.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +43,16 @@ public class BestellungController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    //search ID
+    @GetMapping("/bestellung/{bestellungId}")
+    public ResponseEntity<Bestellung> getBestellungById(@PathVariable("bestellungId") String bestellungId) {
+        Optional<Bestellung> b = bestellungRepository.findById(bestellungId);
+        if (b.isPresent()) {
+            return new ResponseEntity<>(b.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
 }
