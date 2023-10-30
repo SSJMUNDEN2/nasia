@@ -19,9 +19,8 @@ import ch.zhaw.nasia.repository.KundenRepository;
 @RestController
 @RequestMapping("/api")
 public class KundenController {
-
     private static final Logger logger = (Logger) LoggerFactory.getLogger(KundenController.class);
-
+    
     @Autowired
     KundenRepository kundenRepository;
 
