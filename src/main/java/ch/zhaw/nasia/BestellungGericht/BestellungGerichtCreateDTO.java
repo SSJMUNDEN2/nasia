@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-
 public class BestellungGerichtCreateDTO {
     private String bestellungGerichtid;
     private String gerichtsId;
