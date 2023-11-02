@@ -1,5 +1,6 @@
 package ch.zhaw.nasia.Gericht;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -32,4 +33,9 @@ public class Gericht {
         this.name = name;
         this.preis = preis;
     }
+
+    public boolean isPresent() {
+        return false;
+    }
+
 }

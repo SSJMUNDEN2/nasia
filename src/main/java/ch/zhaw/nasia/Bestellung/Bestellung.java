@@ -43,4 +43,8 @@ public class Bestellung {
             this.bestellungGerichtId = bestellungGerichtId;
             this.lieferdauer = lieferdauer;
         }
+
+        public void setLieferantId (String lieferantId) {
+            this.lieferantId = null;
+        }
 }

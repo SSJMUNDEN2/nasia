@@ -31,4 +31,8 @@ public class Lieferant {
         this.name = name;
         this.verfügbarkeit = verfügbarkeit;
     }
+
+    public Lieferant orElse(Object object) {
+        return null;
+    }
 }

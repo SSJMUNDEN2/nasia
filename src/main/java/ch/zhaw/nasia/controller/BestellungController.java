@@ -24,12 +24,12 @@ public class BestellungController {
 
     @PostMapping("/bestellung")
     public ResponseEntity<Bestellung> createBestellung(
-        @RequestBody BestellungCreateDTO bDTO) {
-            Bestellung bDAO = new Bestellung(bDTO.getBestellungId(), bDTO.getKundenId(), bDTO.getLieferantId(), bDTO.getBestellungGerichtId(), bDTO.getLieferdauer());
-            Bestellung b = bestellungRepository.save(bDAO);
-            return new ResponseEntity<>(b, HttpStatus.CREATED);
+            @RequestBody BestellungCreateDTO bDTO) {
+        Bestellung bDAO = new Bestellung(bDTO.getBestellungId(), bDTO.getKundenId(), bDTO.getLieferantId(),
+                bDTO.getBestellungGerichtId(), bDTO.getLieferdauer());
+        Bestellung b = bestellungRepository.save(bDAO);
+        return new ResponseEntity<>(b, HttpStatus.CREATED);
     }
-
 
     @GetMapping("/bestellung")
     public ResponseEntity<List<Bestellung>> getAllBestellung() {
@@ -44,15 +44,14 @@ public class BestellungController {
         }
     }
 
-    //search ID
     @GetMapping("/bestellung/{bestellungId}")
-    public ResponseEntity<Bestellung> getBestellungById(@PathVariable("bestellungId") String bestellungId) {
-        Optional<Bestellung> b = bestellungRepository.findById(bestellungId);
+    public ResponseEntity<Bestellung> getBestellungById(@PathVariable String bestellungId) {
+        logger.info("Received request for bestellungId: " + bestellungId);
+        Optional<Bestellung> b = bestellungRepository.findByBestellungId(bestellungId);
         if (b.isPresent()) {
             return new ResponseEntity<>(b.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        logger.warn("Bestellung not found for ID: " + bestellungId);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    
 }
