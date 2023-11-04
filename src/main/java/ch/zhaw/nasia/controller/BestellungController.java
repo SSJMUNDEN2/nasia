@@ -44,14 +44,16 @@ public class BestellungController {
         }
     }
 
-    @GetMapping("/bestellung/{bestellungId}")
-    public ResponseEntity<Bestellung> getBestellungById(@PathVariable String bestellungId) {
-        logger.info("Received request for bestellungId: " + bestellungId);
-        Optional<Bestellung> b = bestellungRepository.findByBestellungId(bestellungId);
-        if (b.isPresent()) {
-            return new ResponseEntity<>(b.get(), HttpStatus.OK);
+    @GetMapping("/bestellung/{id}")
+    public ResponseEntity<Bestellung> getBestellungById(@PathVariable String id) {
+        logger.info("Received getBestellungById request");
+        Optional<Bestellung> bestellungData = bestellungRepository.findById(id);
+        if (bestellungData.isPresent()) {
+            logger.info("Returned Bestellung with id " + id);
+            return new ResponseEntity<>(bestellungData.get(), HttpStatus.OK);
+        } else {
+            logger.info("Bestellung with id " + id + " not found");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        logger.warn("Bestellung not found for ID: " + bestellungId);
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

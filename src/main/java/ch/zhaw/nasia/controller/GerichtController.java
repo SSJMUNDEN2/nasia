@@ -41,14 +41,14 @@ public class GerichtController {
         }
     }
 
-    //Gerichtsname suchen:
-    @GetMapping("/gericht/{gerichtName}")
-    public ResponseEntity<Gericht> getGerichtByName(@PathVariable String gerichtName) {
-        Gericht g = gerichtRepository.findByName(gerichtName);
-        if (g != null) {
-            return new ResponseEntity<>(g, HttpStatus.OK);
+    @GetMapping("/gericht/{gerichtId}")
+    public ResponseEntity<Gericht> getGerichtById(@PathVariable String gerichtId) {
+        Optional<Gericht> gerichtData = gerichtRepository.findById(gerichtId);
+        if (gerichtData.isPresent()) {
+            return new ResponseEntity<>(gerichtData.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
     

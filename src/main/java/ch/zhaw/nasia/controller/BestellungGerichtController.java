@@ -33,4 +33,14 @@ public class BestellungGerichtController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/bestellungGericht/{bestellungGerichtId}")
+    public ResponseEntity<BestellungGericht> getBestellungGerichtById(@PathVariable String bestellungGerichtId) {
+        BestellungGericht bestellungGerichtData = bestellungGerichtRepository.findByBestellungGerichtid(bestellungGerichtId);
+        if (bestellungGerichtData != null) {
+            return new ResponseEntity<>(bestellungGerichtData, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

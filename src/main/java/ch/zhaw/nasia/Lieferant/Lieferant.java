@@ -2,7 +2,6 @@ package ch.zhaw.nasia.Lieferant;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -16,14 +15,11 @@ import lombok.NoArgsConstructor;
 @Document("lieferant")
 public class Lieferant {
     @Id
-    @Field("lieferantId")
     private String lieferantId;
 
     @NonNull
-    @Field("name")
     private String name;
     
-    @Field("verfügbarkeit")
     private Verfügbarkeit verfügbarkeit = Verfügbarkeit.VERFÜGBAR;
 
     public Lieferant(String lieferantId, String name, Verfügbarkeit verfügbarkeit) {
@@ -32,7 +28,4 @@ public class Lieferant {
         this.verfügbarkeit = verfügbarkeit;
     }
 
-    public Lieferant orElse(Object object) {
-        return null;
-    }
 }

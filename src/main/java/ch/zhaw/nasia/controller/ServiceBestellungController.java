@@ -20,7 +20,6 @@ public class ServiceBestellungController {
         this.bestellungService = bestellungService;
     }
 
-
     @PutMapping("/unterwegs")
     public ResponseEntity<Bestellung> unterwegsBestellung(@RequestBody BestellungStateChangeDTO changeS) {
         System.out.println("Request received: " + changeS.toString());

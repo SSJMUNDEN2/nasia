@@ -6,6 +6,6 @@ import ch.zhaw.nasia.Lieferant.Lieferant;
 
 public interface LieferantRepository extends MongoRepository<Lieferant, String> {
 
-    Lieferant findByLieferantId(String lieferantId);
+   Lieferant findByLieferantId(String lieferantId);
 
 }
