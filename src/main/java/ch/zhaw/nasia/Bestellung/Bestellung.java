@@ -24,7 +24,6 @@ public class Bestellung {
     @NonNull
     private String lieferdauer;
     
-    @NonNull
     private Status status = Status.OFFEN; 
 
     public Bestellung(String bestellungId, String kundenId, String lieferantId, String bestellungGerichtId, String lieferdauer) {
@@ -33,9 +32,5 @@ public class Bestellung {
         this.lieferantId = lieferantId;
         this.bestellungGerichtId = bestellungGerichtId;
         this.lieferdauer = lieferdauer;
-    }
-
-    public void setLieferantId (String lieferantId) {
-        this.lieferantId = null;
     }
 }

@@ -56,4 +56,22 @@ public class BestellungService {
         logger.info("Bestellung with ID {} is now UNTERWEGS with Lieferant ID {}", bestellungId, lieferantId);
         return Optional.of(unterwegsBestellung);
     }
+
+    public Optional<Bestellung> ErledigtBestellung(String bestellungId) {
+        Optional<Bestellung> bestellungOptional = bestellungRepository.findById(bestellungId);
+        if (bestellungOptional.isPresent()) {
+            Bestellung bestellung = bestellungOptional.get();
+            if (bestellung.getStatus() == Status.UNTERWEGS) {
+                bestellung.setStatus(Status.ERLEDIGT);
+                return Optional.of(bestellungRepository.save(bestellung));
+            } else {
+                logger.error("Bestellung with ID {} is not in UNTERWEGS status", bestellungId);
+                return Optional.empty();
+            }
+        } else {
+            logger.error("Bestellung not found with ID: {}", bestellungId);
+            return Optional.empty();
+        }
+    }
+    
 }

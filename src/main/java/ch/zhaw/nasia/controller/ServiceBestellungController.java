@@ -29,4 +29,12 @@ public class ServiceBestellungController {
         return bestellung.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    
+    @PutMapping("/erledigt/{bestellungId}")
+    public ResponseEntity<Bestellung> bestellungGeliefert(@PathVariable String bestellungId) {
+    Optional<Bestellung> bestellungOptional = bestellungService.ErledigtBestellung(bestellungId);
+    return bestellungOptional.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+}
+
 }
