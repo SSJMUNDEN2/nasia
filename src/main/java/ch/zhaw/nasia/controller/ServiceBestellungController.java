@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ch.zhaw.nasia.Bestellung.Bestellung;
 import ch.zhaw.nasia.Bestellung.BestellungStateChangeDTO;
-import ch.zhaw.nasia.service.BestellungService; 
+import ch.zhaw.nasia.service.BestellungService;
 
 @RestController
 @RequestMapping("/api/service")
@@ -29,11 +29,11 @@ public class ServiceBestellungController {
         return bestellung.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+
     @PutMapping("/erledigt/{bestellungId}")
     public ResponseEntity<Bestellung> bestellungGeliefert(@PathVariable String bestellungId) {
-    Optional<Bestellung> bestellungOptional = bestellungService.ErledigtBestellung(bestellungId);
-    return bestellungOptional.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-}
+        Optional<Bestellung> bestellungOptional = bestellungService.ErledigtBestellung(bestellungId);
+        return bestellungOptional.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }
