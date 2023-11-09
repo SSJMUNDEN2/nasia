@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ch.zhaw.nasia.Lieferant.Lieferant;
 import ch.zhaw.nasia.Lieferant.Verfügbarkeit;
 import ch.zhaw.nasia.repository.LieferantRepository;
-
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,4 +29,6 @@ public class LieferantService {
         }
         return Optional.empty(); // Lieferant nicht gefunden oder nicht verfügbar
     }
+
+
 }

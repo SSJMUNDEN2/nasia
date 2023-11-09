@@ -52,4 +52,14 @@ public class LieferantController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/lieferant/verfügbar")
+    public ResponseEntity<List<Lieferant>> getVerfügbarLieferant() {
+        try {
+            List<Lieferant> verfügbarLieferant = lieferantRepository.findByVerfügbarkeit("VERFÜGBAR");
+            return new ResponseEntity<>(verfügbarLieferant, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
