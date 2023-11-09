@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ch.zhaw.nasia.Gericht.Gericht;
 import ch.zhaw.nasia.Gericht.GerichtCreateDTO;
@@ -31,15 +32,6 @@ public class GerichtController {
             return new ResponseEntity<>(g, HttpStatus.CREATED);         
     } 
 
-    @GetMapping("/gericht")
-    public ResponseEntity <List<Gericht>> getAllGericht() {
-        try {
-            List<Gericht> alleGericht = gerichtRepository.findAll();
-            return new ResponseEntity<>(alleGericht, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
     @GetMapping("/gericht/{gerichtId}")
     public ResponseEntity<Gericht> getGerichtById(@PathVariable String gerichtId) {
@@ -50,4 +42,21 @@ public class GerichtController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }    
+    
+    @GetMapping("/gericht")
+    public ResponseEntity<List<Gericht>> getAllGericht(
+        @RequestParam(required = false) Double minPreis,
+        @RequestParam(required = false) String name) {
+        List<Gericht> alleGericht;
+        if (minPreis == null && name == null) {
+            alleGericht = gerichtRepository.findAll();
+        } else if (minPreis != null) {
+            alleGericht = gerichtRepository.findByPreisGreaterThan(minPreis);
+        } else if (name != null) {
+            alleGericht = gerichtRepository.findByName(name);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(alleGericht, HttpStatus.OK);
+    }
 }
